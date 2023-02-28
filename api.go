@@ -158,6 +158,10 @@ func New(endpoint string, opts *Options) (*Client, error) {
 		clnt.overrideSignerType = credentials.SignatureV4
 	}
 
+	clnt.bucketLocCache = &bucketLocationCache{
+		items: make(map[string]string),
+	}
+
 	return clnt, nil
 }
 
